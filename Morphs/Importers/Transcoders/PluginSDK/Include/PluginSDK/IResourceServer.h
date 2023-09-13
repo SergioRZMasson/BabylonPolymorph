@@ -18,6 +18,7 @@ namespace Babylon
 
             /// Implementors must provide this blocking method to return the resource (or nullptr if the resource couldn't be located)
             virtual std::shared_ptr<std::istream> RequestResource(const std::string& fileName) const = 0;
+            virtual std::string GetFullFilePath(const std::string& path) const = 0;
 
             std::shared_ptr<TranscoderTextStream> RequestTextFileResource(const std::string& fileName) const
             {

@@ -41,6 +41,14 @@ namespace Babylon
                 }
                 return istream;
             }
+
+            virtual std::string GetFullFilePath(const std::string& path) const
+            {
+                auto relativePath = Babylon::Utils::IsPathRelative(path) ? path : Babylon::Utils::GetPathFileName(path);
+                auto absolutePath = m_baseDirectory + relativePath;
+                return absolutePath;
+            }
+
         private:
             std::string m_baseDirectory;
         };

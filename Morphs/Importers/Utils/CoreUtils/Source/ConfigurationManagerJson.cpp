@@ -16,6 +16,10 @@
 #include <CoreUtils/ScopeWarden.h>
 #include <CoreUtils/RapidJson.h>
 
+#ifdef GetObject
+#undef GetObject
+#endif
+
 DEFINE_TRACE_AREA(ConfigurationManager, 0);
 
 namespace Babylon

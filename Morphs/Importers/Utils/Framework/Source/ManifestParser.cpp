@@ -10,6 +10,10 @@
 #include <CoreUtils/RapidJson.h>
 #include <CoreUtils/StringUtils.h>
 
+#ifdef GetObject
+#undef GetObject
+#endif
+
 typedef Babylon::rapidjson::GenericDocument<Babylon::rapidjson::UTF16<>> WDocument;
 typedef Babylon::rapidjson::GenericValue<Babylon::rapidjson::UTF16<>> WValue;
 

@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "vcpkg-windows",
+            "generator": "Visual Studio 17 2022",
+            "toolchainFile": "./Dependencies/vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "binaryDir": "${sourceDir}/Build/"
+        }
+    ]
+}

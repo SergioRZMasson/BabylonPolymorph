@@ -13,6 +13,7 @@
 
 #include <Transcoders.h>
 #include <PluginSKP/PluginSKP.h>
+#include <PluginUSD/PluginUSD.h>
 
 DEFINE_TRACE_AREA(Transcode_CPP, 0);
 
@@ -48,6 +49,14 @@ namespace
             }
             return istream;
         }
+
+        virtual std::string GetFullFilePath(const std::string& path) const
+        {
+            auto relativePath = Babylon::Utils::IsPathRelative(path) ? path : Babylon::Utils::GetPathFileName(path);
+            auto absolutePath = m_baseDirectory + relativePath;
+            return absolutePath;
+        }
+
     private:
         std::string m_baseDirectory;
     };
@@ -88,6 +97,12 @@ namespace
             Babylon::Transcoder::RegisterImportFunction("skp", Babylon::Transcoder::ImportSKP);
         }
 #endif
+
+        // Register USD importer if necessary
+        if (format == "usd" && !Babylon::Transcoder::HasImporter("usd"))
+        {
+            Babylon::Transcoder::RegisterImportFunction("usd", Babylon::Transcoder::ImportUSD);
+        }
     }
 
     std::shared_ptr<Babylon::Transcoder::Asset3D> Import(const std::string& inputFilePath, const std::unordered_map<std::string, std::string>& importOptions)

@@ -22,7 +22,7 @@ target_link_libraries(CanvasTex
 
 if(WIN32)
     target_link_libraries(CanvasTex 
-		DirectXTex 
+		Microsoft::DirectXTex
 		d3d11.lib 
 		dxgi.lib 
 		windowscodecs.lib)

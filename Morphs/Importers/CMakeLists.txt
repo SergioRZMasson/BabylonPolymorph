@@ -1,15 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
-project(BabylonImporters)
-
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# External Dependencies
-add_subdirectory(Dependencies/RapidJSON)
-add_subdirectory(Dependencies/GLTFSDK)
-add_subdirectory(Dependencies/DirectXTex)
 
 # Load SketchUP (if available)
 if(WIN32)
@@ -20,6 +12,12 @@ if(WIN32)
 		add_definitions(-DHAS_SKP_LIB)
 	endif()
 endif()
+
+find_package(RapidJSON CONFIG REQUIRED)
+find_package(directxtex CONFIG REQUIRED)
+find_package(TBB CONFIG REQUIRED)
+find_package(pxr CONFIG REQUIRED)
+find_package(GLTFSDK CONFIG REQUIRED)
 
 add_subdirectory(Utils)
 add_subdirectory(Transcoders)

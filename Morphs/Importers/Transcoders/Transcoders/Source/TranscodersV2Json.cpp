@@ -20,6 +20,10 @@
 
 #include "Transcoders.h"
 
+#ifdef GetObject
+#undef GetObject
+#endif
+
 namespace
 {
     std::string GetString(const Babylon::rapidjson::Value& jsonValue)

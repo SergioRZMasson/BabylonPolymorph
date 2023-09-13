@@ -470,14 +470,14 @@ void Decompress(
 
 //---------------------------------------------------------------------------------------------------------------------
 
-DWORD CompressionOptionsToDirectXTex(CompressionOptions options)
+DirectX::TEX_COMPRESS_FLAGS CompressionOptionsToDirectXTex(CompressionOptions options)
 {
     if (options == CompressionOptions::Bc7Use3Subsets)
     {
         return DirectX::TEX_COMPRESS_BC7_USE_3SUBSETS;
     }
 
-    return 0;
+    return DirectX::TEX_COMPRESS_DEFAULT;
 }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -489,7 +489,7 @@ void Compress(
     bool useGpu,
     ScratchImage& cImage)
 {
-    DWORD compress = CompressionOptionsToDirectXTex(compressionOptions);
+    DirectX::TEX_COMPRESS_FLAGS compress = CompressionOptionsToDirectXTex(compressionOptions);
 
     Microsoft::WRL::ComPtr<ID3D11Device> pDevice;
     if (format == TextureFormat::Bc7Unorm &&
@@ -512,7 +512,7 @@ void Compress(
             DirectX::Compress(
                 srcImage.CGetImplementation(),
                 Internal::TextureFormatToDxgiFormat(format),
-                0,
+                DirectX::TEX_COMPRESS_DEFAULT,
                 0,
                 cImage.GetImplementation()),
             "CanvasTex::Compress - Compression failed");

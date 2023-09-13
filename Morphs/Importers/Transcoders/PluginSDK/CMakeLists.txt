@@ -20,5 +20,5 @@ target_link_libraries(PluginSDK
 	CanvasTex
 	ImagingComponent
 	Asset3D
-	RapidJSON
+	rapidjson
 )

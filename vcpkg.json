@@ -1,0 +1,15 @@
+{
+    "name": "babylonpolymorph",
+    "version": "1.0.0",
+    "dependencies": [
+      "usd",
+      "tbb",
+      "directxtex",
+      "ms-gltf",
+      "rapidjson"
+    ],
+    "builtin-baseline": "2b2852767f67c6fa6898b57beb1b2b5bf6af1462",
+    "overrides": [
+        { "name": "tbb", "version-string": "2020_U3" }
+    ]
+  }
